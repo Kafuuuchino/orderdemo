@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.dao.ShopOrderMapper">
+  <resultMap id="BaseResultMap" type="com.zz.entity.ShopOrder">
+    <id column="shop_order_id" jdbcType="VARCHAR" property="shopOrderId" />
+    <result column="shop_order_code" jdbcType="VARCHAR" property="shopOrderCode" />
+    <result column="shop_order_remarks" jdbcType="BIGINT" property="shopOrderRemarks" />
+    <result column="shop_order_user" jdbcType="VARCHAR" property="shopOrderUser" />
+    <result column="shop_order_totalprice" jdbcType="DECIMAL" property="shopOrderTotalprice" />
+    <result column="shop_order_status" jdbcType="BIGINT" property="shopOrderStatus" />
+    <result column="shop_order_name" jdbcType="VARCHAR" property="shopOrderName" />
+    <result column="shop_order_companyid" jdbcType="VARCHAR" property="shopOrderCompanyid" />
+    <result column="shop_order_user_card" jdbcType="VARCHAR" property="shopOrderUserCard" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shop_order_id, shop_order_code, shop_order_remarks, shop_order_user, shop_order_totalprice, 
+    shop_order_status, shop_order_name, shop_order_companyid, shop_order_user_card
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_order
+    where shop_order_id = #{shopOrderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shop_order
+    where shop_order_id = #{shopOrderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zz.entity.ShopOrder">
+    insert into shop_order (shop_order_id, shop_order_code, shop_order_remarks, 
+      shop_order_user, shop_order_totalprice, shop_order_status, 
+      shop_order_name, shop_order_companyid, shop_order_user_card
+      )
+    values (#{shopOrderId,jdbcType=VARCHAR}, #{shopOrderCode,jdbcType=VARCHAR}, #{shopOrderRemarks,jdbcType=BIGINT}, 
+      #{shopOrderUser,jdbcType=VARCHAR}, #{shopOrderTotalprice,jdbcType=DECIMAL}, #{shopOrderStatus,jdbcType=BIGINT}, 
+      #{shopOrderName,jdbcType=VARCHAR}, #{shopOrderCompanyid,jdbcType=VARCHAR}, #{shopOrderUserCard,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.entity.ShopOrder">
+    insert into shop_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopOrderId != null">
+        shop_order_id,
+      </if>
+      <if test="shopOrderCode != null">
+        shop_order_code,
+      </if>
+      <if test="shopOrderRemarks != null">
+        shop_order_remarks,
+      </if>
+      <if test="shopOrderUser != null">
+        shop_order_user,
+      </if>
+      <if test="shopOrderTotalprice != null">
+        shop_order_totalprice,
+      </if>
+      <if test="shopOrderStatus != null">
+        shop_order_status,
+      </if>
+      <if test="shopOrderName != null">
+        shop_order_name,
+      </if>
+      <if test="shopOrderCompanyid != null">
+        shop_order_companyid,
+      </if>
+      <if test="shopOrderUserCard != null">
+        shop_order_user_card,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopOrderId != null">
+        #{shopOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderCode != null">
+        #{shopOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderRemarks != null">
+        #{shopOrderRemarks,jdbcType=BIGINT},
+      </if>
+      <if test="shopOrderUser != null">
+        #{shopOrderUser,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderTotalprice != null">
+        #{shopOrderTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopOrderStatus != null">
+        #{shopOrderStatus,jdbcType=BIGINT},
+      </if>
+      <if test="shopOrderName != null">
+        #{shopOrderName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderCompanyid != null">
+        #{shopOrderCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderUserCard != null">
+        #{shopOrderUserCard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.entity.ShopOrder">
+    update shop_order
+    <set>
+      <if test="shopOrderCode != null">
+        shop_order_code = #{shopOrderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderRemarks != null">
+        shop_order_remarks = #{shopOrderRemarks,jdbcType=BIGINT},
+      </if>
+      <if test="shopOrderUser != null">
+        shop_order_user = #{shopOrderUser,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderTotalprice != null">
+        shop_order_totalprice = #{shopOrderTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopOrderStatus != null">
+        shop_order_status = #{shopOrderStatus,jdbcType=BIGINT},
+      </if>
+      <if test="shopOrderName != null">
+        shop_order_name = #{shopOrderName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderCompanyid != null">
+        shop_order_companyid = #{shopOrderCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="shopOrderUserCard != null">
+        shop_order_user_card = #{shopOrderUserCard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shop_order_id = #{shopOrderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.entity.ShopOrder">
+    update shop_order
+    set shop_order_code = #{shopOrderCode,jdbcType=VARCHAR},
+      shop_order_remarks = #{shopOrderRemarks,jdbcType=BIGINT},
+      shop_order_user = #{shopOrderUser,jdbcType=VARCHAR},
+      shop_order_totalprice = #{shopOrderTotalprice,jdbcType=DECIMAL},
+      shop_order_status = #{shopOrderStatus,jdbcType=BIGINT},
+      shop_order_name = #{shopOrderName,jdbcType=VARCHAR},
+      shop_order_companyid = #{shopOrderCompanyid,jdbcType=VARCHAR},
+      shop_order_user_card = #{shopOrderUserCard,jdbcType=VARCHAR}
+    where shop_order_id = #{shopOrderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.dao.ShopRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zz.entity.ShopRecord">
+    <id column="shop_record_spares_id" jdbcType="VARCHAR" property="shopRecordSparesId" />
+    <result column="shop_record_price" jdbcType="DECIMAL" property="shopRecordPrice" />
+    <result column="shop_record_number" jdbcType="BIGINT" property="shopRecordNumber" />
+    <result column="shop_record_unit" jdbcType="VARCHAR" property="shopRecordUnit" />
+    <result column="shop_record_discount" jdbcType="DECIMAL" property="shopRecordDiscount" />
+    <result column="meal_id" jdbcType="VARCHAR" property="mealId" />
+    <result column="shop_record_actualprice" jdbcType="DECIMAL" property="shopRecordActualprice" />
+    <result column="shop_order_id" jdbcType="VARCHAR" property="shopOrderId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shop_record_spares_id, shop_record_price, shop_record_number, shop_record_unit, shop_record_discount, 
+    meal_id, shop_record_actualprice, shop_order_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_record
+    where shop_record_spares_id = #{shopRecordSparesId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shop_record
+    where shop_record_spares_id = #{shopRecordSparesId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zz.entity.ShopRecord">
+    insert into shop_record (shop_record_spares_id, shop_record_price, 
+      shop_record_number, shop_record_unit, shop_record_discount, 
+      meal_id, shop_record_actualprice, shop_order_id
+      )
+    values (#{shopRecordSparesId,jdbcType=VARCHAR}, #{shopRecordPrice,jdbcType=DECIMAL}, 
+      #{shopRecordNumber,jdbcType=BIGINT}, #{shopRecordUnit,jdbcType=VARCHAR}, #{shopRecordDiscount,jdbcType=DECIMAL}, 
+      #{mealId,jdbcType=VARCHAR}, #{shopRecordActualprice,jdbcType=DECIMAL}, #{shopOrderId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.entity.ShopRecord">
+    insert into shop_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopRecordSparesId != null">
+        shop_record_spares_id,
+      </if>
+      <if test="shopRecordPrice != null">
+        shop_record_price,
+      </if>
+      <if test="shopRecordNumber != null">
+        shop_record_number,
+      </if>
+      <if test="shopRecordUnit != null">
+        shop_record_unit,
+      </if>
+      <if test="shopRecordDiscount != null">
+        shop_record_discount,
+      </if>
+      <if test="mealId != null">
+        meal_id,
+      </if>
+      <if test="shopRecordActualprice != null">
+        shop_record_actualprice,
+      </if>
+      <if test="shopOrderId != null">
+        shop_order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopRecordSparesId != null">
+        #{shopRecordSparesId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRecordPrice != null">
+        #{shopRecordPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopRecordNumber != null">
+        #{shopRecordNumber,jdbcType=BIGINT},
+      </if>
+      <if test="shopRecordUnit != null">
+        #{shopRecordUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRecordDiscount != null">
+        #{shopRecordDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="mealId != null">
+        #{mealId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRecordActualprice != null">
+        #{shopRecordActualprice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopOrderId != null">
+        #{shopOrderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.entity.ShopRecord">
+    update shop_record
+    <set>
+      <if test="shopRecordPrice != null">
+        shop_record_price = #{shopRecordPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopRecordNumber != null">
+        shop_record_number = #{shopRecordNumber,jdbcType=BIGINT},
+      </if>
+      <if test="shopRecordUnit != null">
+        shop_record_unit = #{shopRecordUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRecordDiscount != null">
+        shop_record_discount = #{shopRecordDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="mealId != null">
+        meal_id = #{mealId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRecordActualprice != null">
+        shop_record_actualprice = #{shopRecordActualprice,jdbcType=DECIMAL},
+      </if>
+      <if test="shopOrderId != null">
+        shop_order_id = #{shopOrderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shop_record_spares_id = #{shopRecordSparesId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.entity.ShopRecord">
+    update shop_record
+    set shop_record_price = #{shopRecordPrice,jdbcType=DECIMAL},
+      shop_record_number = #{shopRecordNumber,jdbcType=BIGINT},
+      shop_record_unit = #{shopRecordUnit,jdbcType=VARCHAR},
+      shop_record_discount = #{shopRecordDiscount,jdbcType=DECIMAL},
+      meal_id = #{mealId,jdbcType=VARCHAR},
+      shop_record_actualprice = #{shopRecordActualprice,jdbcType=DECIMAL},
+      shop_order_id = #{shopOrderId,jdbcType=VARCHAR}
+    where shop_record_spares_id = #{shopRecordSparesId,jdbcType=VARCHAR}
+  </update>
+</mapper>
